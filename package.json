@@ -18,8 +18,7 @@
   "license": "Apache-2.0",
   "author": "Justin Poehnelt",
   "files": [
-    "dist/*",
-    "images/*"
+    "dist/*"
   ],
   "main": "dist/index.umd.js",
   "unpkg": "dist/index.min.js",
