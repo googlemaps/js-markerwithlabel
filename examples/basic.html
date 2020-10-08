@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+ Copyright 2020 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>MarkerWithLabel Example</title>
+    <style type="text/css">
+      .labels {
+        color: #ea4335;
+        background-color: white;
+        font-family: Roboto, Arial, sans-serif;
+        font-size: 10px;
+        font-weight: bold;
+        text-align: center;
+        width: 40px;
+        padding: 2px;
+        border: 1px solid #999;
+        box-sizing: border-box;
+        white-space: nowrap;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE"></script>
+    <script src="../dist/index.dev.js"></script>
+    <script>
+      function initMap() {
+        var latLng = new google.maps.LatLng(49.47805, -123.84716);
+        var homeLatLng = new google.maps.LatLng(49.47805, -123.84716);
+
+        var map = new google.maps.Map(document.getElementById("map_canvas"), {
+          zoom: 12,
+          center: latLng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+        });
+
+        var marker1 = new MarkerWithLabel({
+          position: homeLatLng,
+          draggable: false,
+          clickable: false,
+          map: map,
+          labelContent: "$425K",
+          labelAnchor: new google.maps.Point(-21, 3),
+          labelClass: "labels", // the CSS class for the label
+          labelStyle: { opacity: 0.75 },
+        });
+
+        var marker2 = new MarkerWithLabel({
+          position: new google.maps.LatLng(49.475, -123.84),
+          draggable: true,
+          map: map,
+          labelContent: "$395K",
+          labelAnchor: new google.maps.Point(-21, 3),
+          labelClass: "labels", // the CSS class for the label
+          labelStyle: { opacity: 1.0 },
+        });
+
+        var iw1 = new google.maps.InfoWindow({
+          content: "Home For Sale",
+        });
+        var iw2 = new google.maps.InfoWindow({
+          content: "Another Home For Sale",
+        });
+        google.maps.event.addListener(marker1, "click", function (e) {
+          iw1.open(map, this);
+        });
+        google.maps.event.addListener(marker2, "click", function (e) {
+          iw2.open(map, this);
+        });
+      }
+    </script>
+  </head>
+  <body onload="initMap()">
+    <p>
+      A basic example of markers with labels. Note that an information window
+      appears whether you click the marker portion or the label portion of the
+      MarkerWithLabel. The two markers shown here are both draggable so you can
+      easily verify that markers and labels overlap as expected.
+    </p>
+    <div id="map_canvas" style="height: 400px; width: 100%"></div>
+    <div id="log"></div>
+  </body>
+</html>

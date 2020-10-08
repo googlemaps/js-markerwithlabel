@@ -1,0 +1,229 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@googlemaps/markerwithlabel</title>
+	<meta name="description" content="Documentation for @googlemaps/markerwithlabel">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@googlemaps/markerwithlabel</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>@googlemaps/markerwithlabel</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#google-maps-javascript-markerwithlabel" id="google-maps-javascript-markerwithlabel" style="color: inherit; text-decoration: none;">
+					<h1>Google Maps JavaScript MarkerWithLabel</h1>
+				</a>
+				<p><a href="https://www.npmjs.com/package/@googlemaps/markerwithlabel"><img src="https://img.shields.io/npm/v/@googlemaps/markerwithlabel" alt="npm"></a>
+					<img src="https://github.com/googlemaps/js-markerwithlabel/workflows/Build/badge.svg" alt="Build">
+					<img src="https://github.com/googlemaps/js-markerwithlabel/workflows/Release/badge.svg" alt="Release">
+					<a href="https://codecov.io/gh/googlemaps/js-markerwithlabel"><img src="https://codecov.io/gh/googlemaps/js-markerwithlabel/branch/main/graph/badge.svg" alt="codecov"></a>
+					<img src="https://img.shields.io/github/contributors/googlemaps/js-markerwithlabel?color=green" alt="GitHub contributors">
+					<a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release"></a>
+				<a href="https://github.com/apps/in-solidarity"><img src="https://github.com/jpoehnelt/in-solidarity-bot/raw/main/static//badge-flat.png" alt=""></a></p>
+				<a href="#description" id="description" style="color: inherit; text-decoration: none;">
+					<h2>Description</h2>
+				</a>
+				<p>The library creates and manages per-zoom-level clusters for large amounts of markers.</p>
+				<blockquote>
+					<p><strong>Note</strong>: This library is the nearly the same interface as the existing library <code>@google/markerwithlabel</code>, but renamed and in its own repository. All future development will continue here.</p>
+				</blockquote>
+				<blockquote>
+					<p><strong>Note</strong>: There are some breaking changes from <code>@google/markerwithlabel</code> including anchor position. This should be consider a major version bump!</p>
+				</blockquote>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h2>Install</h2>
+				</a>
+				<p>Available via npm as the package <a href="https://www.npmjs.com/package/@googlemaps/markerwithlabel">@googlemaps/markerwithlabel</a>.</p>
+				<p><code>npm i @googlemaps/markerwithlabel</code></p>
+				<p>or</p>
+				<p><code>yarn add @googlemaps/markerwithlabel</code></p>
+				<p>Alternativly you may add the umd package directly to the html document using the unpkg link.</p>
+				<p><code>&lt;script src=&quot;https://unpkg.com/@googlemaps/markerwithlabel/dist/index.min.js&quot;&gt;&lt;/script&gt;</code></p>
+				<p>When adding via unpkg, the loader can be accessed at <code>MarkerClusterer</code>.</p>
+				<p>A version can be specified by using <code>https://unpkg.com/@googlemaps/markerwithlabel@VERSION/dist/...</code>.</p>
+				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+					<h2>Documentation</h2>
+				</a>
+				<p>The reference documentation can be found at this <a href="https://googlemaps.github.io/js-markerwithlabel/index.html">link</a>.</p>
+				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+					<h2>Example</h2>
+				</a>
+				<pre><code class="language-js"><span class="hljs-keyword">new</span> MarkerWithLabel({
+    <span class="hljs-attr">position</span>: <span class="hljs-keyword">new</span> google.maps.LatLng(<span class="hljs-number">49.475</span>, <span class="hljs-number">-123.84</span>),
+    <span class="hljs-attr">clickable</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">draggable</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">map</span>: map,
+    <span class="hljs-attr">labelContent</span>: <span class="hljs-string">&quot;foo&quot;</span>, <span class="hljs-comment">// can also be HTMLElement</span>
+    <span class="hljs-attr">labelAnchor</span>: <span class="hljs-keyword">new</span> google.maps.Point(<span class="hljs-number">-21</span>, <span class="hljs-number">3</span>),
+    <span class="hljs-attr">labelClass</span>: <span class="hljs-string">&quot;labels&quot;</span>, <span class="hljs-comment">// the CSS class for the label</span>
+    <span class="hljs-attr">labelStyle</span>: { <span class="hljs-attr">opacity</span>: <span class="hljs-number">1.0</span> },
+})</code></pre>
+				<p>View the package in action:</p>
+				<ul>
+					<li><a href="https://googlemaps.github.io/js-markerwithlabel/examples/basic.html">Basic Example</a></li>
+					<li><a href="https://googlemaps.github.io/js-markerwithlabel/examples/events.html">Events Example</a></li>
+					<li><a href="https://googlemaps.github.io/js-markerwithlabel/examples/lettered.html">Lettered Example</a></li>
+					<li><a href="https://googlemaps.github.io/js-markerwithlabel/examples/picturelabel.html">Picture Example</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/label.html" class="tsd-kind-icon">Label</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/markerwithlabel.html" class="tsd-kind-icon">Marker<wbr>With<wbr>Label</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/markerwithlabeloptions.html" class="tsd-kind-icon">Marker<wbr>With<wbr>Label<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#labeloptions" class="tsd-kind-icon">Label<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#absolute" class="tsd-kind-icon">ABSOLUTE</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#block" class="tsd-kind-icon">BLOCK</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#click" class="tsd-kind-icon">CLICK</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#cursor" class="tsd-kind-icon">CURSOR</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#dblclick" class="tsd-kind-icon">DBLCLICK</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#drag" class="tsd-kind-icon">DRAG</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#dragend" class="tsd-kind-icon">DRAGEND</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#dragstart" class="tsd-kind-icon">DRAGSTART</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#event_class" class="tsd-kind-icon">EVENT_<wbr>CLASS</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#event_div_opacity" class="tsd-kind-icon">EVENT_<wbr>DIV_<wbr>OPACITY</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#label_class" class="tsd-kind-icon">LABEL_<wbr>CLASS</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#mousedown" class="tsd-kind-icon">MOUSEDOWN</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#mousemove" class="tsd-kind-icon">MOUSEMOVE</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#mouseout" class="tsd-kind-icon">MOUSEOUT</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#mouseover" class="tsd-kind-icon">MOUSEOVER</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#mouseup" class="tsd-kind-icon">MOUSEUP</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#none" class="tsd-kind-icon">NONE</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#abortevent" class="tsd-kind-icon">abort<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#stoppropagation" class="tsd-kind-icon">stop<wbr>Propagation</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

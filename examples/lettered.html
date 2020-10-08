@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+ Copyright 2020 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Lettered Marker</title>
+    <style type="text/css">
+      .labels {
+        color: white;
+        background-color: #ea4335;
+        font-family: Roboto, Arial, sans-serif;
+        font-size: 10px;
+        text-align: center;
+        width: 10px;
+        white-space: nowrap;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE"></script>
+    <script src="../dist/index.dev.js"></script>
+    <script>
+      var marker;
+      function initMap() {
+        var latLng = new google.maps.LatLng(49.47805, -123.84716);
+        var homeLatLng = new google.maps.LatLng(49.47805, -123.84716);
+
+        var map = new google.maps.Map(document.getElementById("map_canvas"), {
+          zoom: 12,
+          center: latLng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+        });
+
+        marker = new MarkerWithLabel({
+          position: homeLatLng,
+          map: map,
+          draggable: true,
+          raiseOnDrag: true,
+          labelContent: "A",
+          labelAnchor: new google.maps.Point(-6, -35),
+          labelClass: "labels", // the CSS class for the label
+          labelInBackground: false,
+        });
+
+        var iw = new google.maps.InfoWindow({
+          content: "",
+        });
+        google.maps.event.addListener(marker, "click", function (e) {
+          iw.open(map, this);
+        });
+      }
+      function log(h) {
+        document.getElementById("log").innerHTML += h + "<br />";
+      }
+    </script>
+  </head>
+  <body onload="initMap()">
+    <p>
+      With MarkerWithLabel you can easily modify a standard marker to include an
+      identifying character of your choice. In this case the marker is
+      superimposed with the letter "A".
+    </p>
+    <div id="map_canvas" style="height: 400px; width: 100%"></div>
+    <div id="log"></div>
+  </body>
+</html>
