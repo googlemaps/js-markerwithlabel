@@ -133,7 +133,6 @@ export class MarkerWithLabel extends MarkerSafe {
         }),
         this.label.addDomListener(MOUSEOUT, (e) => {
           if (!this.isTouchScreen) {
-            
             // wrap the mouseout event in a timeout to avoid the case where mouseup occurs out
             if (this.mouseOutTimeout) {
               clearTimeout(this.mouseOutTimeout);

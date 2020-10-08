@@ -51,7 +51,7 @@ export class Label extends OverlayViewSafe {
     labelZIndexOffset = 1,
     zIndex = 0,
   }: LabelOptions) {
-    super();    
+    super();
 
     this.createElements();
 
