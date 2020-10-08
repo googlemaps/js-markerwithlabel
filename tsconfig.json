@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./dist",
+    "noImplicitAny": true,
+    "outDir": "./dist",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "lib": ["DOM", "ESNext"],
+    "types": ["googlemaps", "jest"],
+    "target": "ES6",
+    "moduleResolution": "node"
+  },
+  "include": ["src/**/*"]
+}
