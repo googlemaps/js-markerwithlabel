@@ -56,7 +56,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.27.2",
     "selenium-webdriver": "^4.0.0-alpha.7",
-    "ts-jest": "^26.3.0",
+    "ts-jest": "^26.4.1",
     "typedoc": "^0.19.1",
     "typescript": "^4.0.2"
   },
