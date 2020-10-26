@@ -27,7 +27,7 @@ export declare class Label extends OverlayViewSafe {
     private eventDiv;
     private zIndexOffset;
     private hoverCursor;
-    constructor({ clickable, cursor, draggable, labelAnchor, labelClass, labelContent, position, opacity, map, labelZIndexOffset, zIndex, }: LabelOptions);
+    constructor({ clickable, cursor, draggable, labelAnchor, labelClass, labelContent, position, opacity, map, labelZIndexOffset, visible, zIndex, }: LabelOptions);
     set content(content: string | HTMLElement);
     set className(className: string);
     set cursor(cursor: string);

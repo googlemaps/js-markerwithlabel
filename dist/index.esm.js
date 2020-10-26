@@ -99,7 +99,7 @@ const LABEL_CLASS = "marker-label";
 const EVENT_CLASS = "marker-label-event";
 const EVENT_DIV_OPACITY = "0.01";
 class Label extends OverlayViewSafe {
-    constructor({ clickable = true, cursor = CURSOR, draggable = true, labelAnchor = new google.maps.Point(0, 0), labelClass = LABEL_CLASS, labelContent, position, opacity = 1, map, labelZIndexOffset = 1, zIndex = 0, }) {
+    constructor({ clickable = true, cursor = CURSOR, draggable = true, labelAnchor = new google.maps.Point(0, 0), labelClass = LABEL_CLASS, labelContent, position, opacity = 1, map, labelZIndexOffset = 1, visible = true, zIndex = 0, }) {
         super();
         this.createElements();
         this.anchor = labelAnchor;
@@ -115,6 +115,7 @@ class Label extends OverlayViewSafe {
             this.position = new google.maps.LatLng(position);
         }
         this.opacity = opacity;
+        this.visible = visible;
         this.zIndex = zIndex;
         this.zIndexOffset = labelZIndexOffset;
         if (map) {
@@ -184,7 +185,9 @@ class Label extends OverlayViewSafe {
         this.labelDiv.style.zIndex = String(zIndex);
         this.eventDiv.style.zIndex = String(zIndex);
         // If not interactive set display none on event div
-        this.eventDiv.style.display = this.isInteractive ? BLOCK : NONE;
+        this.eventDiv.style.display = this.isInteractive
+            ? this.eventDiv.style.display
+            : NONE;
         this.eventDiv.style.cursor = this.cursor;
     }
     addDomListener(event, handler) {
