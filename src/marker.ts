@@ -116,6 +116,7 @@ export class MarkerWithLabel extends MarkerSafe {
       this.interactiveListeners.forEach((l) =>
         google.maps.event.removeListener(l)
       );
+      this.interactiveListeners = null;
     }
   }
 
