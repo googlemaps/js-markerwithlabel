@@ -319,6 +319,7 @@ class MarkerWithLabel extends MarkerSafe {
     removeInteractiveListeners() {
         if (this.interactiveListeners) {
             this.interactiveListeners.forEach((l) => google.maps.event.removeListener(l));
+            this.interactiveListeners = null;
         }
     }
     addInteractiveListeners() {
