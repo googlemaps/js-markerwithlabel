@@ -49,6 +49,7 @@ export class Label extends OverlayViewSafe {
     opacity = 1,
     map,
     labelZIndexOffset = 1,
+    visible = true,
     zIndex = 0,
   }: LabelOptions) {
     super();
@@ -69,6 +70,7 @@ export class Label extends OverlayViewSafe {
     }
 
     this.opacity = opacity;
+    this.visible = visible;
     this.zIndex = zIndex;
     this.zIndexOffset = labelZIndexOffset;
 
@@ -152,7 +154,9 @@ export class Label extends OverlayViewSafe {
     this.eventDiv.style.zIndex = String(zIndex);
 
     // If not interactive set display none on event div
-    this.eventDiv.style.display = this.isInteractive ? BLOCK : NONE;
+    this.eventDiv.style.display = this.isInteractive
+      ? this.eventDiv.style.display
+      : NONE;
     this.eventDiv.style.cursor = this.cursor;
   }
 

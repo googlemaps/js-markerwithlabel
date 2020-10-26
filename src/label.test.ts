@@ -39,7 +39,7 @@ test("should render the divs correctly with string content", () => {
   expect(label["labelDiv"]).toMatchInlineSnapshot(`
     <div
       class="label marker-label"
-      style="position: absolute; opacity: 1; left: 1px; top: 3px; z-index: 4;"
+      style="position: absolute; opacity: 1; display: block; left: 1px; top: 3px; z-index: 4;"
     >
       foo
     </div>
@@ -47,7 +47,7 @@ test("should render the divs correctly with string content", () => {
   expect(label["eventDiv"]).toMatchInlineSnapshot(`
     <div
       class="label marker-label-event"
-      style="position: absolute; opacity: 0.01; cursor: pointer; left: 1px; top: 3px; z-index: 4; display: block;"
+      style="position: absolute; opacity: 0.01; cursor: pointer; display: block; left: 1px; top: 3px; z-index: 4;"
     >
       foo
     </div>
@@ -60,7 +60,7 @@ test("should render the divs correctly with node content", () => {
   expect(label["labelDiv"]).toMatchInlineSnapshot(`
     <div
       class="marker-label"
-      style="position: absolute; opacity: 1; left: 1px; top: 3px; z-index: 4;"
+      style="position: absolute; opacity: 1; display: block; left: 1px; top: 3px; z-index: 4;"
     >
       <img />
     </div>
@@ -68,7 +68,7 @@ test("should render the divs correctly with node content", () => {
   expect(label["eventDiv"]).toMatchInlineSnapshot(`
     <div
       class="marker-label marker-label-event"
-      style="position: absolute; opacity: 0.01; cursor: pointer; left: 1px; top: 3px; z-index: 4; display: block;"
+      style="position: absolute; opacity: 0.01; cursor: pointer; display: block; left: 1px; top: 3px; z-index: 4;"
     >
       <img />
     </div>
@@ -91,7 +91,7 @@ test("should render the divs with options", () => {
   expect(label["labelDiv"]).toMatchInlineSnapshot(`
     <div
       class="label marker-label"
-      style="position: absolute; opacity: 0.5; left: 1px; top: 3px; z-index: 1010;"
+      style="position: absolute; opacity: 0.5; display: block; left: 1px; top: 3px; z-index: 1010;"
     >
       foo
     </div>
@@ -99,26 +99,29 @@ test("should render the divs with options", () => {
   expect(label["eventDiv"]).toMatchInlineSnapshot(`
     <div
       class="label marker-label-event"
-      style="position: absolute; opacity: 0.01; left: 1px; top: 3px; z-index: 1010; display: none; cursor: inherit;"
+      style="position: absolute; opacity: 0.01; display: none; left: 1px; top: 3px; z-index: 1010; cursor: inherit;"
     >
       foo
     </div>
   `);
 });
 
-test("should render the event div based upon interactivity", () => {
-  const label = new Label({
-    labelContent: "foo",
-    draggable: false,
-    clickable: false,
-  });
+test.each([
+  [false, false, "none"],
+  [true, false, "block"],
+  [false, true, "block"],
+  [true, true, "block"],
+])(
+  "should render the event div based upon interactivity %s %s %s",
+  (clickable, draggable, display) => {
+    const label = new Label({
+      labelContent: "foo",
+      draggable: false,
+      clickable: false,
+    });
 
-  [
-    [false, false, "none"],
-    [true, false, "block"],
-    [false, true, "block"],
-    [true, true, "block"],
-  ].map(([clickable, draggable, display]: [boolean, boolean, string]) => {
+    label.visible = true;
+
     label.clickable = clickable;
     label.draggable = draggable;
     label.draw();
@@ -126,5 +129,16 @@ test("should render the event div based upon interactivity", () => {
     expect(label["eventDiv"].style.cursor).toBe(
       display === "block" ? "pointer" : "inherit"
     );
-  });
+  }
+);
+
+test("should not display event div if marker is not visible", () => {
+  const label = new Label({ labelContent: "foo" });
+
+  label.clickable = true;
+  label.draggable = true;
+  label.visible = false;
+
+  label.draw();
+  expect(label["eventDiv"].style.display).toBe("none");
 });
