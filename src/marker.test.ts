@@ -46,7 +46,10 @@ beforeEach(() => {
 });
 
 test("should have listeners after multiple calls to setMap", () => {
-  const map = jest.fn() as any;
+  const map = (jest.fn() as any) as google.maps.Map;
+  (google.maps.Marker.prototype.getMap as jest.Mock).mockImplementation(() => {
+    return map;
+  });
   const marker = new MarkerWithLabel({ labelContent: "foo" });
 
   marker.setMap(map);
@@ -64,6 +67,9 @@ test("should have listeners after multiple calls to setMap", () => {
 
 test("should have interactive listeners", () => {
   const marker = new MarkerWithLabel({ labelContent: "foo" });
+  (google.maps.Marker.prototype.getMap as jest.Mock).mockImplementation(() => {
+    return {} as google.maps.Map;
+  });
   marker["addInteractiveListeners"]();
 
   expect(
@@ -81,4 +87,16 @@ test("should have interactive listeners", () => {
       "touchend",
     ]
   `);
+});
+
+test("should not have interactive listeners if no map", () => {
+  const marker = new MarkerWithLabel({ labelContent: "foo" });
+  (google.maps.Marker.prototype.getMap as jest.Mock).mockImplementation(() => {
+    return;
+  });
+  marker["addInteractiveListeners"]();
+
+  expect(google.maps.event.addDomListener as jest.Mock).toHaveBeenCalledTimes(
+    0
+  );
 });
