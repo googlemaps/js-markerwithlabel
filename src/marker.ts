@@ -126,7 +126,7 @@ export class MarkerWithLabel extends MarkerSafe {
       if (!this.getMap()) {
         return;
       }
-      
+
       this.interactiveListeners = [
         this.label.addDomListener(MOUSEOVER, (e) => {
           if (!this.isTouchScreen) {
