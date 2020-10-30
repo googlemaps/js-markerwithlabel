@@ -324,6 +324,10 @@ class MarkerWithLabel extends MarkerSafe {
     }
     addInteractiveListeners() {
         if (!this.interactiveListeners) {
+            // If the map is not set, do not set listeners
+            if (!this.getMap()) {
+                return;
+            }
             this.interactiveListeners = [
                 this.label.addDomListener(MOUSEOVER, (e) => {
                     if (!this.isTouchScreen) {
