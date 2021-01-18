@@ -37,7 +37,7 @@
     "@babel/runtime-corejs3": "^7.12.5",
     "@googlemaps/jest-mocks": "^0.1.0",
     "@types/googlemaps": "^3.43.1",
-    "@types/jest": "^26.0.19",
+    "@types/jest": "^26.0.20",
     "@types/selenium-webdriver": "^4.0.10",
     "@typescript-eslint/eslint-plugin": ">=4.12.0",
     "@typescript-eslint/parser": ">=4.12.0",
