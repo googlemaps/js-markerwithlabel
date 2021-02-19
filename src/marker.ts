@@ -46,7 +46,7 @@ export class MarkerWithLabel extends MarkerSafe {
   private isMouseDownOnLabel = false;
   private shouldIgnoreClick = false;
   private eventOffset: google.maps.Point | null;
-  private mouseOutTimeout: number;
+  private mouseOutTimeout: ReturnType<typeof setTimeout>;
 
   constructor(options: MarkerWithLabelOptions) {
     super({ ...options });
@@ -212,7 +212,7 @@ export class MarkerWithLabel extends MarkerSafe {
           });
           abortEvent(e);
         }),
-        google.maps.event.addListener(this.getMap(), MOUSEMOVE, (e) => {
+        google.maps.event.addListener(this.getMap(), MOUSEMOVE, (e: google.maps.MapMouseEvent) => {
           if (this.isMouseDownOnLabel && this.getDraggable()) {
             if (this.isDraggingLabel) {
               // Adjust for offset
@@ -243,7 +243,7 @@ export class MarkerWithLabel extends MarkerSafe {
         google.maps.event.addListener(this, DRAGSTART, () => {
           this.label.zIndex = 1000000;
         }),
-        google.maps.event.addListener(this, DRAG, ({ latLng }) => {
+        google.maps.event.addListener(this, DRAG, ({ latLng }: google.maps.MapMouseEvent) => {
           this.setPosition(latLng);
         }),
         google.maps.event.addListener(this, DRAGEND, () => {
