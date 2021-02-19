@@ -212,40 +212,48 @@ export class MarkerWithLabel extends MarkerSafe {
           });
           abortEvent(e);
         }),
-        google.maps.event.addListener(this.getMap(), MOUSEMOVE, (e: google.maps.MapMouseEvent) => {
-          if (this.isMouseDownOnLabel && this.getDraggable()) {
-            if (this.isDraggingLabel) {
-              // Adjust for offset
-              const position = new google.maps.LatLng(
-                e.latLng.lat() - this.eventOffset.y,
-                e.latLng.lng() - this.eventOffset.x
-              );
-              // this.setPosition(position);
-              google.maps.event.trigger(this, DRAG, {
-                ...e,
-                latLng: position,
-              });
-            } else {
-              this.isDraggingLabel = true;
+        google.maps.event.addListener(
+          this.getMap(),
+          MOUSEMOVE,
+          (e: google.maps.MapMouseEvent) => {
+            if (this.isMouseDownOnLabel && this.getDraggable()) {
+              if (this.isDraggingLabel) {
+                // Adjust for offset
+                const position = new google.maps.LatLng(
+                  e.latLng.lat() - this.eventOffset.y,
+                  e.latLng.lng() - this.eventOffset.x
+                );
+                // this.setPosition(position);
+                google.maps.event.trigger(this, DRAG, {
+                  ...e,
+                  latLng: position,
+                });
+              } else {
+                this.isDraggingLabel = true;
 
-              // Calculate and store event offset from marker position
-              this.eventOffset = new google.maps.Point(
-                e.latLng.lng() - this.getPosition().lng(),
-                e.latLng.lat() - this.getPosition().lat()
-              );
-              google.maps.event.trigger(this, DRAGSTART, {
-                ...e,
-                latLng: this.getPosition(),
-              });
+                // Calculate and store event offset from marker position
+                this.eventOffset = new google.maps.Point(
+                  e.latLng.lng() - this.getPosition().lng(),
+                  e.latLng.lat() - this.getPosition().lat()
+                );
+                google.maps.event.trigger(this, DRAGSTART, {
+                  ...e,
+                  latLng: this.getPosition(),
+                });
+              }
             }
           }
-        }),
+        ),
         google.maps.event.addListener(this, DRAGSTART, () => {
           this.label.zIndex = 1000000;
         }),
-        google.maps.event.addListener(this, DRAG, ({ latLng }: google.maps.MapMouseEvent) => {
-          this.setPosition(latLng);
-        }),
+        google.maps.event.addListener(
+          this,
+          DRAG,
+          ({ latLng }: google.maps.MapMouseEvent) => {
+            this.setPosition(latLng);
+          }
+        ),
         google.maps.event.addListener(this, DRAGEND, () => {
           this.label.zIndex = this.getZIndex();
           this.label.draw();
