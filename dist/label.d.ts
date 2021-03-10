@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/// <reference types="googlemaps" />
+/// <reference types="google.maps" />
 import { MarkerWithLabelOptions } from "./marker";
 import { OverlayViewSafe } from "./overlay-view-safe";
 export declare type LabelOptions = Partial<MarkerWithLabelOptions>;
@@ -29,6 +29,17 @@ export declare class Label extends OverlayViewSafe {
     private hoverCursor;
     constructor({ clickable, cursor, draggable, labelAnchor, labelClass, labelContent, position, opacity, map, labelZIndexOffset, visible, zIndex, }: LabelOptions);
     set content(content: string | HTMLElement);
+    /**
+     * Get the class of the label div elements.
+     *
+     * **Note**: This will always return the default `marker-label`.
+     */
+    get className(): string;
+    /**
+     * Set the class of the label div elements.
+     *
+     * **Note**: The default `marker-label` will additionaly be added.
+     */
     set className(className: string);
     set cursor(cursor: string);
     get cursor(): string;

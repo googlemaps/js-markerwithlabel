@@ -134,6 +134,19 @@ class Label extends OverlayViewSafe {
             this.eventDiv.appendChild(content.cloneNode(true));
         }
     }
+    /**
+     * Get the class of the label div elements.
+     *
+     * **Note**: This will always return the default `marker-label`.
+     */
+    get className() {
+        return this.labelDiv.className;
+    }
+    /**
+     * Set the class of the label div elements.
+     *
+     * **Note**: The default `marker-label` will additionaly be added.
+     */
     set className(className) {
         this.labelDiv.className = className;
         this.labelDiv.classList.add(LABEL_CLASS);
@@ -295,6 +308,12 @@ class MarkerWithLabel extends MarkerSafe {
     }
     get isInteractive() {
         return this.getClickable() || this.getDraggable();
+    }
+    get labelClass() {
+        return this.label.className;
+    }
+    set labelClass(className) {
+        this.label.className = className;
     }
     setMap(map) {
         super.setMap(map);

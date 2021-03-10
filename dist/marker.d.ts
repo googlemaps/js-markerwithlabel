@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/// <reference types="googlemaps" />
+/// <reference types="google.maps" />
 import { MarkerSafe } from "./marker-safe";
 export interface MarkerWithLabelOptions extends google.maps.MarkerOptions {
     labelContent: string | HTMLElement;
@@ -33,6 +33,8 @@ export declare class MarkerWithLabel extends MarkerSafe {
     private mouseOutTimeout;
     constructor(options: MarkerWithLabelOptions);
     get isInteractive(): boolean;
+    get labelClass(): string;
+    set labelClass(className: string);
     setMap(map: google.maps.Map | google.maps.StreetViewPanorama | null): void;
     private handleClickableOrDraggableChange;
     private removeInteractiveListeners;
