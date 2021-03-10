@@ -23,3 +23,8 @@
 export declare function extend(type1: any, type2: any): void;
 export declare function abortEvent(e: Event | null): void;
 export declare function stopPropagation(e: Event | null): void;
+export declare function omit(o: {
+    [key: string]: any;
+}, keys: string[]): {
+    [key: string]: any;
+};

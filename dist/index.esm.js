@@ -51,6 +51,11 @@ function stopPropagation(e) {
         e.cancelBubble = true;
     }
 }
+function omit(o, keys) {
+    const x = Object.assign({}, o);
+    keys.forEach((k) => delete x[k]);
+    return x;
+}
 
 /**
  * Copyright 2019 Google LLC. All Rights Reserved.
@@ -276,7 +281,13 @@ const MOUSEOUT = "mouseout";
 const MOUSEUP = "mouseup";
 class MarkerWithLabel extends MarkerSafe {
     constructor(options) {
-        super(Object.assign({}, options));
+        // need to omit extended options to Marker class that collide with setters/getters
+        super(omit(options, [
+            "labelAnchor",
+            "labelZIndexOffset",
+            "labelClass",
+            "labelContent",
+        ]));
         this.isTouchScreen = false;
         this.isDraggingLabel = false;
         this.isMouseDownOnLabel = false;
