@@ -91,6 +91,20 @@ export class Label extends OverlayViewSafe {
     }
   }
 
+  /**
+   * Get the class of the label div elements.
+   *
+   * **Note**: This will always return the default `marker-label`.
+   */
+  get className(): string {
+    return this.labelDiv.className;
+  }
+
+  /**
+   * Set the class of the label div elements.
+   *
+   * **Note**: The default `marker-label` will additionaly be added.
+   */
   set className(className: string) {
     this.labelDiv.className = className;
     this.labelDiv.classList.add(LABEL_CLASS);
