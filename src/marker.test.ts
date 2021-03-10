@@ -100,3 +100,10 @@ test("should not have interactive listeners if no map", () => {
     0
   );
 });
+
+test("should set class on label", () => {
+  const marker = new MarkerWithLabel({ labelContent: "foo" });
+  const className = "bar baz";
+  marker.labelClass = className;
+  expect(marker.labelClass).toMatch(className);
+});

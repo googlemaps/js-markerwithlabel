@@ -89,6 +89,14 @@ export class MarkerWithLabel extends MarkerSafe {
     return this.getClickable() || this.getDraggable();
   }
 
+  get labelClass() {
+    return this.label.className;
+  }
+
+  set labelClass(className: string) {
+    this.label.className = className;
+  }
+
   setMap(map: google.maps.Map | google.maps.StreetViewPanorama | null): void {
     super.setMap(map);
     setTimeout(() => {
