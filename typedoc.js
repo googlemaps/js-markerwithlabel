@@ -15,12 +15,8 @@
  */
 
 module.exports = {
-  mode: "file",
-  target: "es6",
   out: "docs",
   exclude: ["**/node_modules/**", "**/*.spec.ts", "**/*.test.ts"],
-  name: "",
+  name: "@googlemaps/markerwithlabels",
   excludePrivate: true,
-  excludeNotExported: true,
-  excludeExternals: true,
 };
