@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { abortEvent, stopPropagation } from "./util";
+import { abortEvent, omit, stopPropagation } from "./util";
 
 import { Label } from "./label";
 import { MarkerSafe } from "./marker-safe";
@@ -49,7 +49,15 @@ export class MarkerWithLabel extends MarkerSafe {
   private mouseOutTimeout: ReturnType<typeof setTimeout>;
 
   constructor(options: MarkerWithLabelOptions) {
-    super({ ...options });
+    // need to omit extended options to Marker class that collide with setters/getters
+    super(
+      omit(options, [
+        "labelAnchor",
+        "labelZIndexOffset",
+        "labelClass",
+        "labelContent",
+      ])
+    );
     this.label = new Label({ ...{}, ...options });
 
     this.propertyListeners = [
