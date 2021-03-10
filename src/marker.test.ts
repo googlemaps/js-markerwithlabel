@@ -45,6 +45,15 @@ beforeEach(() => {
   google.maps.event.addDomListener = jest.fn();
 });
 
+test("init should not pass extended options", () => {
+  const marker = new MarkerWithLabel({
+    labelContent: "foo",
+    labelClass: "bar",
+    clickable: true,
+  });
+  expect(google.maps.Marker).toBeCalledWith({ clickable: true });
+});
+
 test("should have listeners after multiple calls to setMap", () => {
   const map = (jest.fn() as any) as google.maps.Map;
   (google.maps.Marker.prototype.getMap as jest.Mock).mockImplementation(() => {

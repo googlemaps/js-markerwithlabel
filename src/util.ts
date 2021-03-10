@@ -51,3 +51,13 @@ export function stopPropagation(e: Event | null) {
     e.cancelBubble = true;
   }
 }
+
+export function omit(
+  o: { [key: string]: any },
+  keys: string[]
+): { [key: string]: any } {
+  const x = { ...o };
+
+  keys.forEach((k) => delete x[k]);
+  return x;
+}
