@@ -373,24 +373,31 @@ class MarkerWithLabel extends MarkerSafe {
                         if (this.mouseOutTimeout) {
                             clearTimeout(this.mouseOutTimeout);
                         }
-                        this.mouseOutTimeout = setTimeout(() => {
-                            if (this.isMouseDownOnLabel) {
-                                this.isMouseDownOnLabel = false;
-                                google.maps.event.trigger(this, MOUSEUP, {
-                                    latLng: this.getPosition(),
-                                });
-                                if (this.isDraggingLabel) {
-                                    this.isDraggingLabel = false;
-                                    this.shouldIgnoreClick = true;
-                                    google.maps.event.trigger(this, DRAGEND, {
+                        if (this.isMouseDownOnLabel) {
+                            this.mouseOutTimeout = setTimeout(() => {
+                                if (this.isMouseDownOnLabel) {
+                                    this.isMouseDownOnLabel = false;
+                                    google.maps.event.trigger(this, MOUSEUP, {
                                         latLng: this.getPosition(),
                                     });
+                                    if (this.isDraggingLabel) {
+                                        this.isDraggingLabel = false;
+                                        this.shouldIgnoreClick = true;
+                                        google.maps.event.trigger(this, DRAGEND, {
+                                            latLng: this.getPosition(),
+                                        });
+                                    }
                                 }
-                            }
+                                google.maps.event.trigger(this, MOUSEOUT, {
+                                    latLng: this.getPosition(),
+                                });
+                            }, 200);
+                        }
+                        else {
                             google.maps.event.trigger(this, MOUSEOUT, {
                                 latLng: this.getPosition(),
                             });
-                        }, 200);
+                        }
                         abortEvent(e);
                     }
                 }),
