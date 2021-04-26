@@ -39,7 +39,7 @@
     "@types/google.maps": "^3.44.3",
     "@types/jest": "^26.0.22",
     "@types/selenium-webdriver": "^4.0.12",
-    "@typescript-eslint/eslint-plugin": ">=4.19.0",
+    "@typescript-eslint/eslint-plugin": ">=4.22.0",
     "@typescript-eslint/parser": ">=4.22.0",
     "chromedriver": "^89.0.0",
     "core-js": "^3.11.0",
