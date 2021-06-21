@@ -35,7 +35,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.14.5",
     "@babel/runtime-corejs3": "^7.14.0",
-    "@googlemaps/jest-mocks": "^0.1.1",
+    "@googlemaps/jest-mocks": "^0.2.0",
     "@types/google.maps": "^3.45.1",
     "@types/jest": "^26.0.23",
     "@types/selenium-webdriver": "^4.0.13",
