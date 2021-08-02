@@ -501,5 +501,5 @@ class MarkerWithLabel extends MarkerSafe {
  * limitations under the License.
  */
 
-export default MarkerWithLabel;
+export { MarkerWithLabel as default };
 //# sourceMappingURL=index.esm.js.map
