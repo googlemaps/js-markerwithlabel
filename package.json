@@ -33,7 +33,7 @@
     "test:e2e": "jest --passWithNoTests e2e/*"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.14.8",
+    "@babel/preset-env": "^7.14.9",
     "@babel/runtime-corejs3": "^7.14.7",
     "@googlemaps/jest-mocks": "^1.2.0",
     "@types/google.maps": "^3.45.6",
