@@ -24,13 +24,13 @@ beforeAll(() => {
   initialize();
   google.maps.OverlayView = OverlayView as any;
   Label.prototype.getProjection = (): google.maps.MapCanvasProjection => {
-    return ({
+    return {
       fromPointToLatLng: () => {},
       fromLatLngToPoint: () => {},
       fromLatLngToDivPixel: (position: google.maps.LatLng) => {
         return { x: 1, y: 3 };
       },
-    } as unknown) as google.maps.MapCanvasProjection;
+    } as unknown as google.maps.MapCanvasProjection;
   };
 });
 
@@ -55,7 +55,7 @@ test("init should not pass extended options", () => {
 });
 
 test("should have listeners after multiple calls to setMap", () => {
-  const map = (jest.fn() as any) as google.maps.Map;
+  const map = jest.fn() as any as google.maps.Map;
   (google.maps.Marker.prototype.getMap as jest.Mock).mockImplementation(() => {
     return map;
   });
