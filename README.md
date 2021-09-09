@@ -11,11 +11,11 @@
 
 ## Description
 
-The library creates and manages per-zoom-level clusters for large amounts of markers.
+The library provides Markers with labels for Google Maps Platform.
 
 > **Note**: This library is the nearly the same interface as the existing library `@google/markerwithlabel`, but renamed and in its own repository. All future development will continue here.
 
-> **Note**: There are some breaking changes from `@google/markerwithlabel` including anchor position. This should be consider a major version bump!
+> **Note**: There are some breaking changes from `@google/markerwithlabel` including anchor position. This should be considered a major version bump!
 
 ## Install
 
@@ -31,7 +31,7 @@ Alternativly you may add the umd package directly to the html document using the
 
 `<script src="https://unpkg.com/@googlemaps/markerwithlabel/dist/index.min.js"></script>`
 
-When adding via unpkg, the loader can be accessed at `MarkerClusterer`.
+When adding via unpkg, the marker with labels can be accessed at `MarkerWithLabel`.
 
 A version can be specified by using `https://unpkg.com/@googlemaps/markerwithlabel@VERSION/dist/...`.
 
