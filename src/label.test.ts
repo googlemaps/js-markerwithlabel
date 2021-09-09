@@ -23,13 +23,13 @@ beforeAll(() => {
   initialize();
   google.maps.OverlayView = OverlayView as any;
   Label.prototype.getProjection = (): google.maps.MapCanvasProjection => {
-    return ({
+    return {
       fromPointToLatLng: () => {},
       fromLatLngToPoint: () => {},
       fromLatLngToDivPixel: (position: google.maps.LatLng) => {
         return { x: 1, y: 3 };
       },
-    } as unknown) as google.maps.MapCanvasProjection;
+    } as unknown as google.maps.MapCanvasProjection;
   };
 });
 
