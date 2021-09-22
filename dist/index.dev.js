@@ -506,4 +506,4 @@ var MarkerWithLabel = (function () {
 
   return MarkerWithLabel;
 
-}());
+})();
