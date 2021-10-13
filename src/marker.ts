@@ -97,6 +97,14 @@ export class MarkerWithLabel extends MarkerSafe {
     return this.getClickable() || this.getDraggable();
   }
 
+  get labelContent(): string | HTMLElement {
+    return this.label.content;
+  }
+
+  set labelContent(content: string | HTMLElement) {
+    this.label.content = content;
+  }
+
   get labelClass() {
     return this.label.className;
   }

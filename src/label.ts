@@ -79,6 +79,10 @@ export class Label extends OverlayViewSafe {
     }
   }
 
+  get content(): string | HTMLElement {
+    return this.labelDiv.innerHTML;
+  }
+
   set content(content: string | HTMLElement) {
     if (typeof content === "string") {
       this.labelDiv.innerHTML = content;

@@ -116,3 +116,10 @@ test("should set class on label", () => {
   marker.labelClass = className;
   expect(marker.labelClass).toMatch(className);
 });
+
+test("should set content on label", () => {
+  const marker = new MarkerWithLabel({ labelContent: "foo" });
+  const newConent = "bar";
+  marker.labelContent = newConent;
+  expect(marker.labelContent).toMatch(newConent);
+});
