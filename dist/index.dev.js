@@ -130,6 +130,9 @@ var MarkerWithLabel = (function () {
               this.setMap(map);
           }
       }
+      get content() {
+          return this.labelDiv.innerHTML;
+      }
       set content(content) {
           if (typeof content === "string") {
               this.labelDiv.innerHTML = content;
@@ -322,6 +325,12 @@ var MarkerWithLabel = (function () {
       }
       get isInteractive() {
           return this.getClickable() || this.getDraggable();
+      }
+      get labelContent() {
+          return this.label.content;
+      }
+      set labelContent(content) {
+          this.label.content = content;
       }
       get labelClass() {
           return this.label.className;

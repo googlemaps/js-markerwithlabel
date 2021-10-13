@@ -33,6 +33,8 @@ export declare class MarkerWithLabel extends MarkerSafe {
     private mouseOutTimeout;
     constructor(options: MarkerWithLabelOptions);
     get isInteractive(): boolean;
+    get labelContent(): string | HTMLElement;
+    set labelContent(content: string | HTMLElement);
     get labelClass(): string;
     set labelClass(className: string);
     setMap(map: google.maps.Map | google.maps.StreetViewPanorama | null): void;

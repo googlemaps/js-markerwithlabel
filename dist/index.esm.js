@@ -127,6 +127,9 @@ class Label extends OverlayViewSafe {
             this.setMap(map);
         }
     }
+    get content() {
+        return this.labelDiv.innerHTML;
+    }
     set content(content) {
         if (typeof content === "string") {
             this.labelDiv.innerHTML = content;
@@ -319,6 +322,12 @@ class MarkerWithLabel extends MarkerSafe {
     }
     get isInteractive() {
         return this.getClickable() || this.getDraggable();
+    }
+    get labelContent() {
+        return this.label.content;
+    }
+    set labelContent(content) {
+        this.label.content = content;
     }
     get labelClass() {
         return this.label.className;
