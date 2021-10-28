@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import { Label } from "./label";
-import { MarkerWithLabel } from "./marker";
-import { initialize } from "@googlemaps/jest-mocks";
+import {Label} from './label';
+import {MarkerWithLabel} from './marker';
+import {initialize} from '@googlemaps/jest-mocks';
 
 class OverlayView {}
 beforeAll(() => {
@@ -28,7 +28,7 @@ beforeAll(() => {
       fromPointToLatLng: () => {},
       fromLatLngToPoint: () => {},
       fromLatLngToDivPixel: (position: google.maps.LatLng) => {
-        return { x: 1, y: 3 };
+        return {x: 1, y: 3};
       },
     } as unknown as google.maps.MapCanvasProjection;
   };
@@ -45,41 +45,41 @@ beforeEach(() => {
   google.maps.event.addDomListener = jest.fn();
 });
 
-test("init should not pass extended options", () => {
+test('init should not pass extended options', () => {
   const marker = new MarkerWithLabel({
-    labelContent: "foo",
-    labelClass: "bar",
+    labelContent: 'foo',
+    labelClass: 'bar',
     clickable: true,
   });
-  expect(google.maps.Marker).toBeCalledWith({ clickable: true });
+  expect(google.maps.Marker).toBeCalledWith({clickable: true});
 });
 
-test("should have listeners after multiple calls to setMap", () => {
+test('should have listeners after multiple calls to setMap', () => {
   const map = jest.fn() as any as google.maps.Map;
   (google.maps.Marker.prototype.getMap as jest.Mock).mockImplementation(() => {
     return map;
   });
-  const marker = new MarkerWithLabel({ labelContent: "foo" });
+  const marker = new MarkerWithLabel({labelContent: 'foo'});
 
   marker.setMap(map);
   jest.advanceTimersByTime(1);
-  expect(marker["interactiveListeners"].length).toBeGreaterThan(0);
+  expect(marker['interactiveListeners'].length).toBeGreaterThan(0);
 
   marker.setMap(null);
   jest.advanceTimersByTime(1);
-  expect(marker["interactiveListeners"]).toBe(null);
+  expect(marker['interactiveListeners']).toBe(null);
 
   marker.setMap(map);
   jest.advanceTimersByTime(1);
-  expect(marker["interactiveListeners"].length).toBeGreaterThan(0);
+  expect(marker['interactiveListeners'].length).toBeGreaterThan(0);
 });
 
-test("should have interactive listeners", () => {
-  const marker = new MarkerWithLabel({ labelContent: "foo" });
+test('should have interactive listeners', () => {
+  const marker = new MarkerWithLabel({labelContent: 'foo'});
   (google.maps.Marker.prototype.getMap as jest.Mock).mockImplementation(() => {
     return {} as google.maps.Map;
   });
-  marker["addInteractiveListeners"]();
+  marker['addInteractiveListeners']();
 
   expect(
     (google.maps.event.addDomListener as any).mock.calls.map((c: any[]) => c[1])
@@ -98,28 +98,28 @@ test("should have interactive listeners", () => {
   `);
 });
 
-test("should not have interactive listeners if no map", () => {
-  const marker = new MarkerWithLabel({ labelContent: "foo" });
+test('should not have interactive listeners if no map', () => {
+  const marker = new MarkerWithLabel({labelContent: 'foo'});
   (google.maps.Marker.prototype.getMap as jest.Mock).mockImplementation(() => {
     return;
   });
-  marker["addInteractiveListeners"]();
+  marker['addInteractiveListeners']();
 
   expect(google.maps.event.addDomListener as jest.Mock).toHaveBeenCalledTimes(
     0
   );
 });
 
-test("should set class on label", () => {
-  const marker = new MarkerWithLabel({ labelContent: "foo" });
-  const className = "bar baz";
+test('should set class on label', () => {
+  const marker = new MarkerWithLabel({labelContent: 'foo'});
+  const className = 'bar baz';
   marker.labelClass = className;
   expect(marker.labelClass).toMatch(className);
 });
 
-test("should set content on label", () => {
-  const marker = new MarkerWithLabel({ labelContent: "foo" });
-  const newConent = "bar";
+test('should set content on label', () => {
+  const marker = new MarkerWithLabel({labelContent: 'foo'});
+  const newConent = 'bar';
   marker.labelContent = newConent;
   expect(marker.labelContent).toMatch(newConent);
 });

@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-import { Label } from "./label";
-import { initialize } from "@googlemaps/jest-mocks";
+import {Label} from './label';
+import {initialize} from '@googlemaps/jest-mocks';
 
 class OverlayView {}
 beforeAll(() => {
-  document.body.innerHTML = "";
+  document.body.innerHTML = '';
   initialize();
   google.maps.OverlayView = OverlayView as any;
   Label.prototype.getProjection = (): google.maps.MapCanvasProjection => {
@@ -27,16 +27,16 @@ beforeAll(() => {
       fromPointToLatLng: () => {},
       fromLatLngToPoint: () => {},
       fromLatLngToDivPixel: (position: google.maps.LatLng) => {
-        return { x: 1, y: 3 };
+        return {x: 1, y: 3};
       },
     } as unknown as google.maps.MapCanvasProjection;
   };
 });
 
-test("should render the divs correctly with string content", () => {
-  const label = new Label({ labelContent: "foo", labelClass: "label" });
+test('should render the divs correctly with string content', () => {
+  const label = new Label({labelContent: 'foo', labelClass: 'label'});
   label.draw();
-  expect(label["labelDiv"]).toMatchInlineSnapshot(`
+  expect(label['labelDiv']).toMatchInlineSnapshot(`
     <div
       class="label marker-label"
       style="position: absolute; opacity: 1; display: block; left: 1px; top: 3px; z-index: 4;"
@@ -44,7 +44,7 @@ test("should render the divs correctly with string content", () => {
       foo
     </div>
   `);
-  expect(label["eventDiv"]).toMatchInlineSnapshot(`
+  expect(label['eventDiv']).toMatchInlineSnapshot(`
     <div
       class="label marker-label-event"
       style="position: absolute; opacity: 0.01; cursor: pointer; display: block; left: 1px; top: 3px; z-index: 4;"
@@ -54,10 +54,10 @@ test("should render the divs correctly with string content", () => {
   `);
 });
 
-test("should render the divs correctly with node content", () => {
-  const label = new Label({ labelContent: document.createElement("img") });
+test('should render the divs correctly with node content', () => {
+  const label = new Label({labelContent: document.createElement('img')});
   label.draw();
-  expect(label["labelDiv"]).toMatchInlineSnapshot(`
+  expect(label['labelDiv']).toMatchInlineSnapshot(`
     <div
       class="marker-label"
       style="position: absolute; opacity: 1; display: block; left: 1px; top: 3px; z-index: 4;"
@@ -65,7 +65,7 @@ test("should render the divs correctly with node content", () => {
       <img />
     </div>
   `);
-  expect(label["eventDiv"]).toMatchInlineSnapshot(`
+  expect(label['eventDiv']).toMatchInlineSnapshot(`
     <div
       class="marker-label marker-label-event"
       style="position: absolute; opacity: 0.01; cursor: pointer; display: block; left: 1px; top: 3px; z-index: 4;"
@@ -75,20 +75,20 @@ test("should render the divs correctly with node content", () => {
   `);
 });
 
-test("should render the divs with options", () => {
+test('should render the divs with options', () => {
   const label = new Label({
-    labelContent: "foo",
+    labelContent: 'foo',
     opacity: 0.5,
-    labelClass: "label",
-    position: { lat: 0, lng: 0 },
-    anchorPoint: { x: 100, y: 200 } as google.maps.Point,
+    labelClass: 'label',
+    position: {lat: 0, lng: 0},
+    anchorPoint: {x: 100, y: 200} as google.maps.Point,
     labelZIndexOffset: 10,
     zIndex: 1000,
     draggable: false,
     clickable: false,
   });
   label.draw();
-  expect(label["labelDiv"]).toMatchInlineSnapshot(`
+  expect(label['labelDiv']).toMatchInlineSnapshot(`
     <div
       class="label marker-label"
       style="position: absolute; opacity: 0.5; display: block; left: 1px; top: 3px; z-index: 1010;"
@@ -96,7 +96,7 @@ test("should render the divs with options", () => {
       foo
     </div>
   `);
-  expect(label["eventDiv"]).toMatchInlineSnapshot(`
+  expect(label['eventDiv']).toMatchInlineSnapshot(`
     <div
       class="label marker-label-event"
       style="position: absolute; opacity: 0.01; display: none; left: 1px; top: 3px; z-index: 1010; cursor: inherit;"
@@ -107,15 +107,15 @@ test("should render the divs with options", () => {
 });
 
 test.each([
-  [false, false, "none"],
-  [true, false, "block"],
-  [false, true, "block"],
-  [true, true, "block"],
+  [false, false, 'none'],
+  [true, false, 'block'],
+  [false, true, 'block'],
+  [true, true, 'block'],
 ])(
-  "should render the event div based upon interactivity %s %s %s",
+  'should render the event div based upon interactivity %s %s %s',
   (clickable, draggable, display) => {
     const label = new Label({
-      labelContent: "foo",
+      labelContent: 'foo',
       draggable: false,
       clickable: false,
     });
@@ -125,20 +125,20 @@ test.each([
     label.clickable = clickable;
     label.draggable = draggable;
     label.draw();
-    expect(label["eventDiv"].style.display).toBe(display);
-    expect(label["eventDiv"].style.cursor).toBe(
-      display === "block" ? "pointer" : "inherit"
+    expect(label['eventDiv'].style.display).toBe(display);
+    expect(label['eventDiv'].style.cursor).toBe(
+      display === 'block' ? 'pointer' : 'inherit'
     );
   }
 );
 
-test("should not display event div if marker is not visible", () => {
-  const label = new Label({ labelContent: "foo" });
+test('should not display event div if marker is not visible', () => {
+  const label = new Label({labelContent: 'foo'});
 
   label.clickable = true;
   label.draggable = true;
   label.visible = false;
 
   label.draw();
-  expect(label["eventDiv"].style.display).toBe("none");
+  expect(label['eventDiv'].style.display).toBe('none');
 });

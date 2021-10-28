@@ -14,21 +14,21 @@
  * limitations under the License.
  */
 
-import { abortEvent, omit, stopPropagation } from "./util";
+import {abortEvent, omit, stopPropagation} from './util';
 
-import { Label } from "./label";
-import { MarkerSafe } from "./marker-safe";
+import {Label} from './label';
+import {MarkerSafe} from './marker-safe';
 
-const CLICK = "click";
-const DBLCLICK = "dblclick";
-const DRAG = "drag";
-const DRAGEND = "dragend";
-const DRAGSTART = "dragstart";
-const MOUSEDOWN = "mousedown";
-const MOUSEMOVE = "mousemove";
-const MOUSEOVER = "mouseover";
-const MOUSEOUT = "mouseout";
-const MOUSEUP = "mouseup";
+const CLICK = 'click';
+const DBLCLICK = 'dblclick';
+const DRAG = 'drag';
+const DRAGEND = 'dragend';
+const DRAGSTART = 'dragstart';
+const MOUSEDOWN = 'mousedown';
+const MOUSEMOVE = 'mousemove';
+const MOUSEOVER = 'mouseover';
+const MOUSEOUT = 'mouseout';
+const MOUSEUP = 'mouseup';
 
 export interface MarkerWithLabelOptions extends google.maps.MarkerOptions {
   labelContent: string | HTMLElement;
@@ -52,41 +52,41 @@ export class MarkerWithLabel extends MarkerSafe {
     // need to omit extended options to Marker class that collide with setters/getters
     super(
       omit(options, [
-        "labelAnchor",
-        "labelZIndexOffset",
-        "labelClass",
-        "labelContent",
+        'labelAnchor',
+        'labelZIndexOffset',
+        'labelClass',
+        'labelContent',
       ])
     );
-    this.label = new Label({ ...{}, ...options });
+    this.label = new Label({...{}, ...options});
 
     this.propertyListeners = [
       google.maps.event.addListener(
         this,
-        "clickable_changed",
+        'clickable_changed',
         this.handleClickableOrDraggableChange
       ),
-      google.maps.event.addListener(this, "cursor_changed", () => {
+      google.maps.event.addListener(this, 'cursor_changed', () => {
         this.label.cursor = this.getCursor();
       }),
       google.maps.event.addListener(
         this,
-        "draggable_changed",
+        'draggable_changed',
         this.handleClickableOrDraggableChange
       ),
-      google.maps.event.addListener(this, "position_changed", () => {
+      google.maps.event.addListener(this, 'position_changed', () => {
         this.label.position = this.getPosition();
       }),
-      google.maps.event.addListener(this, "opacity_changed", () => {
+      google.maps.event.addListener(this, 'opacity_changed', () => {
         this.label.opacity = this.getOpacity();
       }),
-      google.maps.event.addListener(this, "title_changed", () => {
+      google.maps.event.addListener(this, 'title_changed', () => {
         this.label.title = this.getTitle();
       }),
-      google.maps.event.addListener(this, "visible_changed", () => {
+      google.maps.event.addListener(this, 'visible_changed', () => {
         this.label.visible = this.getVisible();
       }),
-      google.maps.event.addListener(this, "zindex_changed", () => {
+      google.maps.event.addListener(this, 'zindex_changed', () => {
         this.label.zIndex = this.getZIndex();
         this.label.draw();
       }),
@@ -137,7 +137,7 @@ export class MarkerWithLabel extends MarkerSafe {
 
   private removeInteractiveListeners() {
     if (this.interactiveListeners) {
-      this.interactiveListeners.forEach((l) =>
+      this.interactiveListeners.forEach(l =>
         google.maps.event.removeListener(l)
       );
       this.interactiveListeners = null;
@@ -152,7 +152,7 @@ export class MarkerWithLabel extends MarkerSafe {
       }
 
       this.interactiveListeners = [
-        this.label.addDomListener(MOUSEOVER, (e) => {
+        this.label.addDomListener(MOUSEOVER, e => {
           if (!this.isTouchScreen) {
             google.maps.event.trigger(this, MOUSEOVER, {
               latLng: this.getPosition(),
@@ -161,7 +161,7 @@ export class MarkerWithLabel extends MarkerSafe {
             abortEvent(e);
           }
         }),
-        this.label.addDomListener(MOUSEOUT, (e) => {
+        this.label.addDomListener(MOUSEOUT, e => {
           if (!this.isTouchScreen) {
             // wrap the mouseout event in a timeout to avoid the case where mouseup occurs out
             if (this.mouseOutTimeout) {
@@ -198,7 +198,7 @@ export class MarkerWithLabel extends MarkerSafe {
             abortEvent(e);
           }
         }),
-        this.label.addDomListener(MOUSEDOWN, (e) => {
+        this.label.addDomListener(MOUSEDOWN, e => {
           this.isDraggingLabel = false;
           this.isMouseDownOnLabel = true;
           google.maps.event.trigger(this, MOUSEDOWN, {
@@ -208,8 +208,8 @@ export class MarkerWithLabel extends MarkerSafe {
             abortEvent(e);
           }
         }),
-        this.label.addDomListener(MOUSEUP, (e) => {
-          const markerEvent = { latLng: this.getPosition() };
+        this.label.addDomListener(MOUSEUP, e => {
+          const markerEvent = {latLng: this.getPosition()};
 
           if (this.isMouseDownOnLabel) {
             this.isMouseDownOnLabel = false;
@@ -227,7 +227,7 @@ export class MarkerWithLabel extends MarkerSafe {
             }
           }
         }),
-        this.label.addDomListener(CLICK, (e) => {
+        this.label.addDomListener(CLICK, e => {
           if (this.shouldIgnoreClick) {
             this.shouldIgnoreClick = false;
           } else {
@@ -237,7 +237,7 @@ export class MarkerWithLabel extends MarkerSafe {
           }
           abortEvent(e);
         }),
-        this.label.addDomListener(DBLCLICK, (e) => {
+        this.label.addDomListener(DBLCLICK, e => {
           google.maps.event.trigger(this, DBLCLICK, {
             latLng: this.getPosition(),
           });
@@ -281,7 +281,7 @@ export class MarkerWithLabel extends MarkerSafe {
         google.maps.event.addListener(
           this,
           DRAG,
-          ({ latLng }: google.maps.MapMouseEvent) => {
+          ({latLng}: google.maps.MapMouseEvent) => {
             this.setPosition(latLng);
           }
         ),
@@ -290,14 +290,14 @@ export class MarkerWithLabel extends MarkerSafe {
           this.label.draw();
         }),
         // Prevent touch events from passing through the label DIV to the underlying map.
-        this.label.addDomListener("touchstart", (e) => {
+        this.label.addDomListener('touchstart', e => {
           this.isTouchScreen = true;
           stopPropagation(e);
         }),
-        this.label.addDomListener("touchmove", (e) => {
+        this.label.addDomListener('touchmove', e => {
           stopPropagation(e);
         }),
-        this.label.addDomListener("touchend", (e) => {
+        this.label.addDomListener('touchend', e => {
           stopPropagation(e);
         }),
       ];

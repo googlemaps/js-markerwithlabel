@@ -53,11 +53,11 @@ export function stopPropagation(e: Event | null) {
 }
 
 export function omit(
-  o: { [key: string]: any },
+  o: {[key: string]: any},
   keys: string[]
-): { [key: string]: any } {
-  const x = { ...o };
+): {[key: string]: any} {
+  const x = {...o};
 
-  keys.forEach((k) => delete x[k]);
+  keys.forEach(k => delete x[k]);
   return x;
 }

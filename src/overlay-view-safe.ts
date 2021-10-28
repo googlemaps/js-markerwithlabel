@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { extend } from "./util";
+import {extend} from './util';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface OverlayViewSafe extends google.maps.OverlayView {}

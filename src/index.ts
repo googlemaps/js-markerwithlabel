@@ -14,6 +14,6 @@
  * limitations under the License.
  */
 
-import { MarkerWithLabel } from "./marker";
+import {MarkerWithLabel} from './marker';
 
 export default MarkerWithLabel;

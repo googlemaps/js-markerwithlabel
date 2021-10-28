@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-import { MarkerWithLabelOptions } from "./marker";
-import { OverlayViewSafe } from "./overlay-view-safe";
+import {MarkerWithLabelOptions} from './marker';
+import {OverlayViewSafe} from './overlay-view-safe';
 
 export type LabelOptions = Partial<MarkerWithLabelOptions>;
 
-const BLOCK = "block";
-const NONE = "none";
-const ABSOLUTE = "absolute";
-const CURSOR = "pointer";
-const LABEL_CLASS = "marker-label";
-const EVENT_CLASS = "marker-label-event";
-const EVENT_DIV_OPACITY = "0.01";
+const BLOCK = 'block';
+const NONE = 'none';
+const ABSOLUTE = 'absolute';
+const CURSOR = 'pointer';
+const LABEL_CLASS = 'marker-label';
+const EVENT_CLASS = 'marker-label-event';
+const EVENT_DIV_OPACITY = '0.01';
 
 export class Label extends OverlayViewSafe {
   public anchor: google.maps.Point;
@@ -84,13 +84,13 @@ export class Label extends OverlayViewSafe {
   }
 
   set content(content: string | HTMLElement) {
-    if (typeof content === "string") {
+    if (typeof content === 'string') {
       this.labelDiv.innerHTML = content;
       this.eventDiv.innerHTML = content;
     } else {
-      this.labelDiv.innerHTML = "";
+      this.labelDiv.innerHTML = '';
       this.labelDiv.appendChild(content);
-      this.eventDiv.innerHTML = "";
+      this.eventDiv.innerHTML = '';
       this.eventDiv.appendChild(content.cloneNode(true));
     }
   }
@@ -124,7 +124,7 @@ export class Label extends OverlayViewSafe {
   }
 
   get cursor() {
-    return this.isInteractive ? this.hoverCursor : "inherit";
+    return this.isInteractive ? this.hoverCursor : 'inherit';
   }
 
   get isInteractive() {
@@ -191,8 +191,8 @@ export class Label extends OverlayViewSafe {
   }
 
   private createElements(): void {
-    this.labelDiv = document.createElement("div");
-    this.eventDiv = document.createElement("div");
+    this.labelDiv = document.createElement('div');
+    this.eventDiv = document.createElement('div');
 
     // default class names
     this.labelDiv.classList.add(LABEL_CLASS);
