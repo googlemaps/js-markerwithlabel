@@ -17,13 +17,13 @@
   },
   "license": "Apache-2.0",
   "author": "Justin Poehnelt",
-  "files": [
-    "dist/*"
-  ],
   "main": "dist/index.umd.js",
   "unpkg": "dist/index.min.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist/*"
+  ],
   "scripts": {
     "docs": "typedoc src/index.ts && cp -r dist docs/dist && cp -r examples docs/examples",
     "format": "eslint . --fix",
@@ -36,6 +36,9 @@
     "@babel/preset-env": "^7.16.4",
     "@babel/runtime-corejs3": "^7.16.3",
     "@googlemaps/jest-mocks": "^1.3.7",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-typescript": "^8.3.0",
     "@types/google.maps": "^3.46.1",
     "@types/jest": "^27.0.2",
     "@types/selenium-webdriver": "^4.0.16",
@@ -51,10 +54,7 @@
     "jest": "^26.6.3",
     "prettier": "^2.4.1",
     "rollup": "^2.60.0",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.31.0",
     "selenium-webdriver": "^4.0.0",
     "ts-jest": "^26.5.6",
     "typedoc": "^0.22.9",
