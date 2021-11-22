@@ -29,8 +29,8 @@ export default [
   {
     input: "src/index.ts",
     plugins: [
-      typescript({ tsconfig: './tsconfig.json', 'declarationDir': './' }),
-,
+      typescript({ tsconfig: "./tsconfig.json", declarationDir: "./" }),
+
       commonjs(),
       babel(babelOptions),
       terser(terserOptions),
@@ -54,8 +54,11 @@ export default [
   },
   {
     input: "src/index.ts",
-    plugins: [typescript({ tsconfig: './tsconfig.json', 'declarationDir': './' }),
-, commonjs()],
+    plugins: [
+      typescript({ tsconfig: "./tsconfig.json", declarationDir: "./" }),
+
+      commonjs(),
+    ],
     output: {
       file: "dist/index.dev.js",
       format: "iife",
@@ -64,8 +67,9 @@ export default [
   },
   {
     input: "src/index.ts",
-    plugins: [typescript({ tsconfig: './tsconfig.json', 'declarationDir': './' }),
-],
+    plugins: [
+      typescript({ tsconfig: "./tsconfig.json", declarationDir: "./" }),
+    ],
     output: {
       file: "dist/index.esm.js",
       format: "esm",
