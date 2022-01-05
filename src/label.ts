@@ -79,11 +79,15 @@ export class Label extends OverlayViewSafe {
     }
   }
 
-  get content(): string | HTMLElement {
+  public get element(): HTMLElement {
+    return this.labelDiv;
+  }
+
+  public get content(): string {
     return this.labelDiv.innerHTML;
   }
 
-  set content(content: string | HTMLElement) {
+  public set content(content: string | HTMLElement) {
     if (typeof content === "string") {
       this.labelDiv.innerHTML = content;
       this.eventDiv.innerHTML = content;
@@ -100,7 +104,7 @@ export class Label extends OverlayViewSafe {
    *
    * **Note**: This will always return the default `marker-label`.
    */
-  get className(): string {
+  public get className(): string {
     return this.labelDiv.className;
   }
 
@@ -109,37 +113,37 @@ export class Label extends OverlayViewSafe {
    *
    * **Note**: The default `marker-label` will additionaly be added.
    */
-  set className(className: string) {
+  public set className(className: string) {
     this.labelDiv.className = className;
     this.labelDiv.classList.add(LABEL_CLASS);
     this.eventDiv.className = className;
     this.eventDiv.classList.add(EVENT_CLASS);
   }
 
-  set cursor(cursor: string) {
+  public set cursor(cursor: string) {
     this.hoverCursor = cursor;
     if (this.isInteractive) {
       this.eventDiv.style.cursor = cursor;
     }
   }
 
-  get cursor() {
+  public get cursor(): string {
     return this.isInteractive ? this.hoverCursor : "inherit";
   }
 
-  get isInteractive() {
+  public get isInteractive(): boolean {
     return this.draggable || this.clickable;
   }
 
-  set opacity(opacity: number) {
+  public set opacity(opacity: number) {
     this.labelDiv.style.opacity = String(opacity);
   }
 
-  set title(title: string) {
+  public set title(title: string) {
     this.eventDiv.title = title;
   }
 
-  set visible(visible: boolean) {
+  public set visible(visible: boolean) {
     if (visible) {
       this.labelDiv.style.display = BLOCK;
       this.eventDiv.style.display = BLOCK;
@@ -149,12 +153,12 @@ export class Label extends OverlayViewSafe {
     }
   }
 
-  onAdd() {
+  public onAdd(): void {
     this.getPanes().markerLayer.appendChild(this.labelDiv);
     this.getPanes().overlayMouseTarget.appendChild(this.eventDiv);
   }
 
-  draw() {
+  public draw(): void {
     const coordinates = this.getProjection().fromLatLngToDivPixel(
       this.position
     );
@@ -178,14 +182,14 @@ export class Label extends OverlayViewSafe {
     this.eventDiv.style.cursor = this.cursor;
   }
 
-  addDomListener(
+  public addDomListener(
     event: string,
     handler: (event: Event) => void
   ): google.maps.MapsEventListener {
     return google.maps.event.addDomListener(this.eventDiv, event, handler);
   }
 
-  onRemove() {
+  public onRemove(): void {
     this.labelDiv.parentNode.removeChild(this.labelDiv);
     this.eventDiv.parentNode.removeChild(this.eventDiv);
   }
