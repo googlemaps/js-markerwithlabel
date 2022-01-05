@@ -27,11 +27,11 @@ or
 
 `yarn add @googlemaps/markerwithlabel`
 
-Alternativly you may add the umd package directly to the html document using the unpkg link.
+Alternatively you may add the umd package directly to the html document using the unpkg link.
 
 `<script src="https://unpkg.com/@googlemaps/markerwithlabel/dist/index.min.js"></script>`
 
-When adding via unpkg, the marker with labels can be accessed at `MarkerWithLabel`.
+When adding via unpkg, the marker with labels can be accessed at `new markerWithLabel.MarkerWithLabel()`.
 
 A version can be specified by using `https://unpkg.com/@googlemaps/markerwithlabel@VERSION/dist/...`.
 
