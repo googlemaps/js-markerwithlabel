@@ -42,6 +42,8 @@ The reference documentation can be found at this [link](https://googlemaps.githu
 ## Example
 
 ```js
+import { MarkerWithLabel } from '@googlemaps/markerwithlabel';
+
 new MarkerWithLabel({
     position: new google.maps.LatLng(49.475, -123.84),
     clickable: true,
