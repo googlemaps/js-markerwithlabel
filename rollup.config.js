@@ -40,15 +40,13 @@ export default [
         file: "dist/index.umd.js",
         format: "umd",
         sourcemap: true,
-        exports: "default",
-        name: "MarkerWithLabel",
+        name: "markerWithLabel",
       },
       {
         file: "dist/index.min.js",
         format: "iife",
         sourcemap: true,
-        exports: "default",
-        name: "MarkerWithLabel",
+        name: "markerWithLabel",
       },
     ],
   },
@@ -62,7 +60,7 @@ export default [
     output: {
       file: "dist/index.dev.js",
       format: "iife",
-      name: "MarkerWithLabel",
+      name: "markerWithLabel",
     },
   },
   {
@@ -74,7 +72,6 @@ export default [
       file: "dist/index.esm.js",
       format: "esm",
       sourcemap: true,
-      name: "MarkerWithLabel",
     },
   },
 ];
