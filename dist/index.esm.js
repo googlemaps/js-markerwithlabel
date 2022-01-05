@@ -127,6 +127,9 @@ class Label extends OverlayViewSafe {
             this.setMap(map);
         }
     }
+    get element() {
+        return this.labelDiv;
+    }
     get content() {
         return this.labelDiv.innerHTML;
     }
@@ -323,6 +326,16 @@ class MarkerWithLabel extends MarkerSafe {
     get isInteractive() {
         return this.getClickable() || this.getDraggable();
     }
+    /**
+     * Gets label element.
+     */
+    get labelElement() {
+        return this.label.element;
+    }
+    /**
+     * Gets label `innerHTML`. See {@link Marker.labelElement} for
+     * accessing the HTMLElement instead.
+     */
     get labelContent() {
         return this.label.content;
     }
