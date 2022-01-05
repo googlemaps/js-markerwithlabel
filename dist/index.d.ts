@@ -13,5 +13,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MarkerWithLabel } from "./marker";
-export default MarkerWithLabel;
+import { MarkerWithLabel, MarkerWithLabelOptions } from "./marker";
+export { MarkerWithLabel, MarkerWithLabelOptions };

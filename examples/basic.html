@@ -47,7 +47,7 @@
           mapTypeId: google.maps.MapTypeId.ROADMAP,
         });
 
-        var marker1 = new MarkerWithLabel({
+        var marker1 = new markerWithLabel.MarkerWithLabel({
           position: homeLatLng,
           draggable: false,
           clickable: false,
@@ -58,7 +58,7 @@
           labelStyle: { opacity: 0.75 },
         });
 
-        var marker2 = new MarkerWithLabel({
+        var marker2 = new markerWithLabel.MarkerWithLabel({
           position: new google.maps.LatLng(49.475, -123.84),
           draggable: true,
           map: map,
