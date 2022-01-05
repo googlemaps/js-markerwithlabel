@@ -93,27 +93,40 @@ export class MarkerWithLabel extends MarkerSafe {
     ];
   }
 
-  get isInteractive() {
+  public get isInteractive(): boolean {
     return this.getClickable() || this.getDraggable();
   }
 
-  get labelContent(): string | HTMLElement {
+  /**
+   * Gets label element.
+   */
+  public get labelElement(): HTMLElement {
+    return this.label.element;
+  }
+
+  /**
+   * Gets label `innerHTML`. See {@link Marker.labelElement} for
+   * accessing the HTMLElement instead.
+   */
+  public get labelContent(): string {
     return this.label.content;
   }
 
-  set labelContent(content: string | HTMLElement) {
+  public set labelContent(content: string | HTMLElement) {
     this.label.content = content;
   }
 
-  get labelClass() {
+  public get labelClass(): string {
     return this.label.className;
   }
 
-  set labelClass(className: string) {
+  public set labelClass(className: string) {
     this.label.className = className;
   }
 
-  setMap(map: google.maps.Map | google.maps.StreetViewPanorama | null): void {
+  public setMap(
+    map: google.maps.Map | google.maps.StreetViewPanorama | null
+  ): void {
     super.setMap(map);
     setTimeout(() => {
       this.label.setMap(map);
