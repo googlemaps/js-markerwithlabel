@@ -224,9 +224,6 @@ class Label extends OverlayViewSafe {
     createElements() {
         this.labelDiv = document.createElement("div");
         this.eventDiv = document.createElement("div");
-        // default class names
-        this.labelDiv.classList.add(LABEL_CLASS);
-        this.labelDiv.classList.add(EVENT_CLASS);
         // default styles for both divs
         this.labelDiv.style.position = ABSOLUTE;
         this.eventDiv.style.position = ABSOLUTE;
