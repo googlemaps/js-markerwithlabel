@@ -1,7 +1,7 @@
 # Google Maps JavaScript MarkerWithLabel
 
 [![npm](https://img.shields.io/npm/v/@googlemaps/markerwithlabel)](https://www.npmjs.com/package/@googlemaps/markerwithlabel)
-![Build](https://github.com/googlemaps/js-markerwithlabel/workflows/Build/badge.svg)
+![Build](https://github.com/googlemaps/js-markerwithlabel/workflows/Test/badge.svg)
 ![Release](https://github.com/googlemaps/js-markerwithlabel/workflows/Release/badge.svg)
 [![codecov](https://codecov.io/gh/googlemaps/js-markerwithlabel/branch/main/graph/badge.svg)](https://codecov.io/gh/googlemaps/js-markerwithlabel)
 ![GitHub contributors](https://img.shields.io/github/contributors/googlemaps/js-markerwithlabel?color=green)
