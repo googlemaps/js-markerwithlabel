@@ -48,7 +48,7 @@
     "core-js": "^3.22.2",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-jest": "^26.1.5",
+    "eslint-plugin-jest": "^26.2.2",
     "eslint-plugin-prettier": "^4.0.0",
     "geckodriver": "^3.0.1",
     "jest": "^26.6.3",
