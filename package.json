@@ -41,7 +41,7 @@
     "@rollup/plugin-typescript": "^9.0.1",
     "@types/google.maps": "^3.50.4",
     "@types/jest": "^27.4.1",
-    "@types/selenium-webdriver": "^4.1.5",
+    "@types/selenium-webdriver": "^4.1.6",
     "@typescript-eslint/eslint-plugin": ">=4.33.0",
     "@typescript-eslint/parser": ">=4.33.0",
     "chromedriver": "^106.0.1",
