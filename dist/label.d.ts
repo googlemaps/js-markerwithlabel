@@ -16,7 +16,7 @@
 /// <reference types="google.maps" />
 import { MarkerWithLabelOptions } from "./marker";
 import { OverlayViewSafe } from "./overlay-view-safe";
-export declare type LabelOptions = Partial<MarkerWithLabelOptions>;
+export type LabelOptions = Partial<MarkerWithLabelOptions>;
 export declare class Label extends OverlayViewSafe {
     anchor: google.maps.Point;
     position: google.maps.LatLng;
