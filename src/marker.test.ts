@@ -42,7 +42,7 @@ beforeEach(() => {
 
   Label.prototype.setMap = jest.fn();
 
-  Label.prototype.addDomListener = jest.fn();
+  HTMLElement.prototype.addEventListener = jest.fn();
 });
 
 test("init should not pass extended options", () => {
@@ -82,7 +82,7 @@ test("should have interactive listeners", () => {
   marker["addInteractiveListeners"]();
 
   expect(
-    (Label.prototype.addDomListener as any).mock.calls.map((c: any[]) => c[0])
+    (HTMLElement.prototype.addEventListener as any).mock.calls.map((c: any[]) => c[0])
   ).toMatchInlineSnapshot(`
     Array [
       "mouseover",
@@ -105,7 +105,7 @@ test("should not have interactive listeners if no map", () => {
   });
   marker["addInteractiveListeners"]();
 
-  expect(Label.prototype.addDomListener as jest.Mock).toHaveBeenCalledTimes(
+  expect(HTMLElement.prototype.addEventListener as jest.Mock).toHaveBeenCalledTimes(
     0
   );
 });
