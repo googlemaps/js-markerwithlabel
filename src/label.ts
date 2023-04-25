@@ -185,8 +185,9 @@ export class Label extends OverlayViewSafe {
   public addDomListener(
     event: string,
     handler: (event: Event) => void
-  ): google.maps.MapsEventListener {
-    return google.maps.event.addDomListener(this.eventDiv, event, handler);
+    ): google.maps.MapsEventListener {
+    this.eventDiv.addEventListener(event, handler);
+    return { remove: () => this.eventDiv.removeEventListener(event, handler) };
   }
 
   public onRemove(): void {
