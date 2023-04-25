@@ -215,7 +215,8 @@ class Label extends OverlayViewSafe {
         this.eventDiv.style.cursor = this.cursor;
     }
     addDomListener(event, handler) {
-        return google.maps.event.addDomListener(this.eventDiv, event, handler);
+        this.eventDiv.addEventListener(event, handler);
+        return { remove: () => this.eventDiv.removeEventListener(event, handler) };
     }
     onRemove() {
         this.labelDiv.parentNode.removeChild(this.labelDiv);
