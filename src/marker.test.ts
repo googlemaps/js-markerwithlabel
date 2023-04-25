@@ -82,7 +82,9 @@ test("should have interactive listeners", () => {
   marker["addInteractiveListeners"]();
 
   expect(
-    (HTMLElement.prototype.addEventListener as any).mock.calls.map((c: any[]) => c[0])
+    (HTMLElement.prototype.addEventListener as any).mock.calls.map(
+      (c: any[]) => c[0]
+    )
   ).toMatchInlineSnapshot(`
     Array [
       "mouseover",
@@ -105,9 +107,9 @@ test("should not have interactive listeners if no map", () => {
   });
   marker["addInteractiveListeners"]();
 
-  expect(HTMLElement.prototype.addEventListener as jest.Mock).toHaveBeenCalledTimes(
-    0
-  );
+  expect(
+    HTMLElement.prototype.addEventListener as jest.Mock
+  ).toHaveBeenCalledTimes(0);
 });
 
 test("should set class on label", () => {
