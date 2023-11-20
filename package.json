@@ -45,7 +45,7 @@
     "@typescript-eslint/eslint-plugin": ">=4.33.0",
     "@typescript-eslint/parser": ">=4.33.0",
     "chromedriver": "^119.0.1",
-    "core-js": "^3.33.2",
+    "core-js": "^3.33.3",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-jest": "^27.6.0",
