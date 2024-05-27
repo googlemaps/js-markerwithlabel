@@ -37,7 +37,7 @@
     "@babel/runtime-corejs3": "^7.24.5",
     "@googlemaps/jest-mocks": "^2.21.4",
     "@rollup/plugin-babel": "^6.0.4",
-    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-commonjs": "^25.0.8",
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/google.maps": "^3.55.9",
     "@types/jest": "^27.4.1",
